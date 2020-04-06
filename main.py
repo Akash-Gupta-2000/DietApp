@@ -17,7 +17,18 @@ heightInch = int(input("inches:"))
 
 while True:
     gender = bool(input("\nEnter your gender:\n0 for male\n1 for female:\n"))
-    PA = int(input("\nEnter your physical Activity level\n0 for Sedentary\n1 for Low Active\n2 for Active\n3 for Very Active\n"))
+    hours=float(input("Enter your hours of workout/exercise:"))
+    #PA = int(input("\nEnter your physical Activity level\n0 for Sedentary\n1 for Low Active\n2 for Active\n3 for Very Active\n"))
+    if(0<=hours<=1): 
+        PA=0
+    elif(1<hours<=2): 
+        PA=1
+    elif(2<hours<=3):
+        PA=2
+    elif(hours>3):
+        PA=3
+    else 
+        print("Time cannot be negative!")
     if gender == 0: # Male
         if PA == 0:
             PA = 1.0
