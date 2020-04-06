@@ -7,7 +7,6 @@ from dailyIntakeClass import dailyIntake
 
 print("Welcome to the diet app\n")
 
-
 age = int(input("Enter your age in years:"))
 weightKilos = int(input("Enter your weight in Kilos:"))
 print('Enter Your Height:')

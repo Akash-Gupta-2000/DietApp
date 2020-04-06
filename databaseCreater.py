@@ -1,18 +1,8 @@
-# Program will create an SQL Database, parse the food list entries and enter them into the SQL Database
 import sqlite3
-
-"""
-NOTES: How to insert a variable into an SQL Table:
-format:
-c.execute("INSERT INTO food VALUES (:foodName, :calories, :protein, :carbs, :protein, :fat)",
-    {'foodName': FOODNAMEVARIABLE, 'calories': CALORIESVARIABLE, etc...})
-"""
-
 
 # Function will create the SQL Database table and populate it with the values from foodList.txt
 def createTableandPopulate():
-    # Creates the database and connection
-    # c will be our cursor
+    
     conn = sqlite3.connect('foodlist.db')
     c = conn.cursor()
 
@@ -27,9 +17,8 @@ def createTableandPopulate():
               )""")
     conn.commit()
 
-    file = open("foodList.txt", "r")    # Opens the foodList.txt file in read mode
-    # Will loop through and print every piece of information seperately
-    #for line in file:
+    file = open("foodList.txt", "r")    
+    
     while True:
         try:
             line = file.readline()
