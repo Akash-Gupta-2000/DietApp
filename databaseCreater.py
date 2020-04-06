@@ -3,7 +3,7 @@ import sqlite3
 # Function will create the SQL Database table and populate it with the values from foodList.txt
 def createTableandPopulate():
     
-    conn = sqlite3.connect('foodlist.db')
+    conn = sqlite3.connect('foodList.db')
     c = conn.cursor()
 
     # Creates the table
@@ -13,7 +13,8 @@ def createTableandPopulate():
               fat integer,
               calories integer,
               carbs integer,
-              protein integer
+              protein integer,
+              vegetarian text
               )""")
     conn.commit()
 
@@ -22,7 +23,7 @@ def createTableandPopulate():
     while True:
         try:
             line = file.readline()
-            foodName, foodServing, fatGrams, calories, carbGrams, proteinGrams = line.split("@")
+            foodName, foodServing, fatGrams, calories, carbGrams, proteinGrams, vegetarian = line.split("@")
 
             # Cast the string values into integers for SQL input
             fatGrams = int(fatGrams)
@@ -32,8 +33,8 @@ def createTableandPopulate():
 
 
             # Line will input the values into the SQL database
-            c.execute("INSERT INTO food VALUES (:foodName, :foodServing, :fat, :calories, :carbs, :protein)",
-                      {'foodName': foodName, 'foodServing': foodServing, 'fat': fatGrams, 'calories': calories, 'carbs': carbGrams, 'protein': proteinGrams})
+            c.execute("INSERT INTO food VALUES (:foodName, :foodServing, :fat, :calories, :carbs, :protein ,:veg)",
+                      {'foodName': foodName, 'foodServing': foodServing, 'fat': fatGrams, 'calories': calories, 'carbs': carbGrams, 'protein': proteinGrams , 'veg': vegetarian})
             conn.commit()
             print(line)
         except ValueError:

@@ -72,6 +72,7 @@ elif gender == 1:
     TEE = 387-7.31*age+PA*(10.9*weightKilos+660.7*height)
     math.ceil(TEE)
 
+veg = input("\nAre you Vegetarian?:\n1 for Veg \n0 for Non Veg:\n")
 
 # Lose Weight: carbs 40%, protein 35%, fat 25% of diet
 # Maintain Weight: carbs 50%, protein 25%, fat 25% of diet
@@ -118,7 +119,7 @@ fatGram = math.ceil(fatCal / 9)
 
 userIntake = dailyIntake(TEE, proteinGram, carbsGram, fatGram)
 
-conn = sqlite3.connect('foodlist.db')
+conn = sqlite3.connect('foodList.db')
 
 c = conn.cursor()   
 
@@ -134,8 +135,8 @@ while True:
         table = c.fetchall()
         i = 0
         for row in table:  
-            cName, cServing, cFat, cCal, cCarb, cProtein = table[i]     
-            foodSearchList.append(foodSearchClass.foodItem(cName, cServing, cFat, cCal, cCarb, cProtein))
+            cName, cServing, cFat, cCal, cCarb, cProtein ,cVeg= table[i]     
+            foodSearchList.append(foodSearchClass.foodItem(cName, cServing, cFat, cCal, cCarb, cProtein, cVeg))
             i += 1
 
         i = 0
@@ -175,3 +176,26 @@ if userIntake.fatG > userIntake.fatIntake:
     print("You currently have", userIntake.fatG-userIntake.fatIntake, " grams of carbs remaining for the day")
 else:
     print("You have eaten ", userIntake.fatIntake-userIntake.fatG, " grams too many of fat")
+
+
+print("\nAlternative Diet Suggestions are:")
+remCalories=int(userIntake.TEE)-userIntake.calorieCount
+
+c.execute("SELECT * FROM food WHERE calories BETWEEN ? and ? ",(remCalories-50 , remCalories+50))
+foodSearchList = []
+
+table = c.fetchall()
+i = 0
+for row in table:  
+    cName, cServing, cFat, cCal, cCarb, cProtein,cVeg = table[i]     
+    foodSearchList.append(foodSearchClass.foodItem(cName, cServing, cFat, cCal, cCarb, cProtein,cVeg))
+    i += 1
+
+i = 0
+for entries in foodSearchList:
+    print(i)
+    foodSearchList[i].printer()
+    i += 1
+
+
+

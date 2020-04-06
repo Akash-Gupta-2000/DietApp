@@ -3,16 +3,17 @@
 
 
 class foodItem():
-    def __init__(self, cName, cServing, cFat, cCal, cCarb, cProtein):
+    def __init__(self, cName, cServing, cFat, cCal, cCarb, cProtein, cVeg):
         self.foodName = cName
         self.foodServing = cServing
         self.foodFat = cFat
         self.foodCal = cCal
         self.foodCarb = cCarb
         self.foodProtein = cProtein
+        self.veg = cVeg
 
     def printer(self):
-        print("Food Name:"+self.foodName+"Serving Size:"+self.foodServing+"Calories:"+str(self.foodCal)+" Grams of Fat:"+str(self.foodFat)+" Grams of Carbs:"+str(self.foodCarb)+" Grams of Protein:"+str(self.foodProtein)+"\n")
+        print("Food Name:"+self.foodName+"Serving Size:"+self.foodServing+"Calories:"+str(self.foodCal)+"\n")
 
     def getValues(self):
         return(self.foodCal, self.foodProtein, self.foodCarb, self.foodFat)
