@@ -45,16 +45,16 @@ while True:
             print("Incorrect Physical Activity Level Entered.")
     elif gender == 1: # Female
         if PA == 0:
-            PA == 1.0
+            PA = 1.0
             break
         elif PA == 1:
-            PA == 1.14
+            PA = 1.14
             break
         elif PA == 2:
-            PA == 1.27
+            PA = 1.27
             break
         elif PA == 3:
-            PA == 1.45
+            PA = 1.45
             break
         else:
             print("Incorrect Physical Activity Level Entered.")
@@ -181,7 +181,7 @@ else:
 print("\nAlternative Diet Suggestions are:")
 remCalories=int(userIntake.TEE)-userIntake.calorieCount
 
-c.execute("SELECT * FROM food WHERE calories BETWEEN ? and ? ",(remCalories-50 , remCalories+50))
+c.execute("SELECT * FROM food WHERE calories BETWEEN ? and ?",(remCalories-50 , remCalories+50))
 foodSearchList = []
 
 table = c.fetchall()
@@ -193,7 +193,7 @@ for row in table:
 
 i = 0
 for entries in foodSearchList:
-    print(i)
+    print(i+1)
     foodSearchList[i].printer()
     i += 1
 
