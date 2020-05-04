@@ -73,6 +73,7 @@ elif gender == 1:
     math.ceil(TEE)
 
 veg = input("\nAre you Vegetarian?:\n1 for Veg \n0 for Non Veg:\n")
+disease = input("\nEnter the Disease name you are suffering from, if any, otherwise enter 'None'\n")
 
 # Lose Weight: carbs 40%, protein 35%, fat 25% of diet
 # Maintain Weight: carbs 50%, protein 25%, fat 25% of diet
